@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1a001a, #000);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1, h2 {
+      color: #ff4d6d;
+      margin-top: 80px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      margin: 20px;
+    }
+
+    #revealBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #555;
+      color: white;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+      max-width: 85%;
+      margin: 40px auto;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #ffd6e0;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id="note">💌 There’s something for you…</h2>
+<button id="revealBtn" onclick="showQuestion()">Click to see 💕</button>
+
+<h1 id="question" class="hidden">Hey love ❤️<br>I want to ask you something</h1>
+
+<div id="buttons" class="hidden">
+  <button id="yes" onclick="revealMessage()">YES 💖</button>
+  <button id="no" onmouseover="runAway()">NO 🙈</button>
+</div>
+
+<div id="message" class="hidden">
+  <p>
+    From the moment you walked into my world, everything quietly changed.
+    Your smile feels like home, your voice calms my chaos, and your presence
+    turns ordinary moments into something magical. I admire how kind,
+    thoughtful, and beautiful you are, inside and out. Being with you makes
+    me want to be better, love deeper, and smile harder. If I had one wish,
+    it would be to keep choosing you every single day, creating memories
+    filled with laughter, warmth, and endless love. You truly mean the world
+    to me ❤️
+  </p>
+</div>
+
+<script>
+  function showQuestion() {
+    document.getElementById("note").style.display = "none";
+    document.getElementById("revealBtn").style.display = "none";
+    document.getElementById("question").classList.remove("hidden");
+    document.getElementById("buttons").classList.remove("hidden");
+  }
+
+  function revealMessage() {
+    document.getElementById("message").classList.remove("hidden");
+  }
+
+  function runAway() {
+    let noBtn = document.getElementById("no");
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }, 300);
+</script>
+
+</body>
+</html>
